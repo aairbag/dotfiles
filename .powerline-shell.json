@@ -1,0 +1,17 @@
+{
+  "segments": [
+    "exit_code",
+    "hostname",
+    "ssh",
+    "cwd",
+    "git",
+    "jobs",
+    "time",
+    "k8s",
+    "newline"
+  ],
+  "cwd": {
+    "mode": "dironly"
+  },
+  "theme": "solarized_dark"
+}
