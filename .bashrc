@@ -16,6 +16,8 @@ if [ "$TERM" != "linux" ]; then
     PROMPT_COMMAND="_update_ps1; update_terminal_cwd"
 fi
 
+export EDITOR=vim
+
 # Custom aliases
 alias reload='source ~/.bash_profile'
 alias cp='cp -iv' # copy file(s) -stderr if overwriting existing file -verbose

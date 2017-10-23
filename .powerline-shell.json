@@ -6,8 +6,8 @@
     "cwd",
     "git",
     "jobs",
-    "time",
     "k8s",
+    "time",
     "newline"
   ],
   "cwd": {
