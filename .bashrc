@@ -11,6 +11,8 @@ if [ -f ~/z.sh ]; then
    source ~/z.sh
 fi
 
+#### Sensible Bash - github.com/mrzool/bash-sensible ####
+
 # Unique Bash version check
 if ((BASH_VERSINFO[0] < 4))
 then
@@ -18,8 +20,6 @@ then
   echo "sensible.bash: You need at least bash-4.0 or some options will not work correctly."
   echo "sensible.bash: Keep your software up-to-date!"
 fi
-
-#### Sensible Bash - github.com/mrzool/bash-sensible ####
 
 ## GENERAL OPTIONS ##
 
@@ -77,7 +77,7 @@ bind '"\e[D": backward-char'
 colorflag="-G"
 alias ls="command ls ${colorflag}"
 alias l="ls -lF ${colorflag}" # all files, in long format
-alias ll="ls -laF ${colorflag}" # all files inc dotfiles, in long format
+alias ll='ls -alGh $@' # all files inc dotfiles, in long format
 alias lsd='ls -lF ${colorflag} | grep "^d"' # only directories
 
 # Quicker navigation
@@ -87,10 +87,72 @@ alias ...="cd ../.."
 # Colored up cat!
 alias cat="highlight -O ansi"
 
-# Git
-# You must install Git first
-alias gs='git status'
-alias ga='git add .'
-alias gc='git commit -m' # requires you to type a commit message
-alias gp='git push'
-alias grm='git rm $(git ls-files --deleted)'
+#### My own stuff ####
+
+alias cp='cp -iv' # copy file(s) -stderr if overwriting existing file -verbose
+alias mv='mv -iv' # move file(s) -stderr if overwriting existing file -verbose
+alias mkdir='mkdir -v' # make directory -verbose
+alias path='echo -e ${PATH//:/\\n}' # echos all executable paths
+alias ls='ls -G' # list directory contents --colorized
+alias ll='ls -FGlahp' # list directory contents -display symbols based on filetype -colorized -long format -all -unit suffixes -slash after directory
+alias finder='open -a Finder ./' # opens current directory in macOS Finder
+alias c='clear'
+alias h='history'
+alias grep='grep --color=auto' # file pattern searcher --colorized
+alias ip='whoami ; echo -e \ - Public IP Address: ; curl ipecho.net/plain ; echo ; echo -e \ - Internal IP Address: ;  ipconfig getifaddr en0' # show public and local ip adresses
+alias watch='watch '
+cd() { builtin cd "$@"; ls; }
+bind '"\ex": kill-whole-line'
+
+# Kubernetes
+alias k='kubectl'
+alias ktouch='kubectl create'
+alias kf='kubectl create -f'
+alias krm='kubectl delete'
+alias kvi='kubectl edit'
+alias kman='kubectl explain'
+alias kls='kubectl get -o wide'
+alias kcat='kubectl get -oyaml'
+
+# kubectl get
+alias kapiservices='kubectl get --all-namespaces -o wide apiservices'
+alias kcsr='kubectl get --all-namespaces -o wide csr'
+alias kclusters='kubectl get --all-namespaces -o wide clusters'
+alias kclusterrolebindings='kubectl get -o wide clusterrolebindings'
+alias kclusterroles='kubectl get -o wide clusterroles'
+alias kcs='kubectl get -o wide cs'
+alias kcm='kubectl get --all-namespaces -o wide cm'
+alias kcontrollerrevisions='kubectl get --all-namespaces -o wide controllerrevisions'
+alias kcronjobs='kubectl get --all-namespaces -o wide cronjobs'
+alias kcrd='kubectl get --all-namespaces -o wide crd'
+alias kds='kubectl get --all-namespaces -o wide ds'
+alias kdeploy='kubectl get --all-namespaces -o wide deploy'
+alias kep='kubectl get --all-namespaces -o wide ep'
+alias kev='kubectl get --all-namespaces -o wide ev'
+alias khpa='kubectl get --all-namespaces -o wide hpa'
+alias king='kubectl get --all-namespaces -o wide ing'
+alias kjobs='kubectl get --all-namespaces -o wide jobs'
+alias klimits='kubectl get --all-namespaces -o wide limits'
+alias kns='kubectl get -o wide ns'
+alias knetpol='kubectl get --all-namespaces -o wide netpol'
+alias kno='kubectl get -o wide no'
+alias kpvc='kubectl get --all-namespaces -o wide pvc'
+alias kpv='kubectl get --all-namespaces -o wide pv'
+alias kpdb='kubectl get --all-namespaces -o wide pdb'
+alias kpodpreset='kubectl get --all-namespaces -o wide podpreset'
+alias kpo='kubectl get --all-namespaces -o wide po'
+alias kpsp='kubectl get --all-namespaces -o wide psp'
+alias kpodtemplates='kubectl get --all-namespaces -o wide podtemplates'
+alias krs='kubectl get --all-namespaces -o wide rs'
+alias krc='kubectl get --all-namespaces -o wide rc'
+alias kquota='kubectl get --all-namespaces -o wide quota'
+alias krolebindings='kubectl get --all-namespaces -o wide rolebindings'
+alias kroles='kubectl get --all-namespaces -o wide roles'
+alias ksecrets='kubectl get --all-namespaces -o wide secrets'
+alias ksa='kubectl get --all-namespaces -o wide sa'
+alias ksvc='kubectl get --all-namespaces -o wide svc'
+alias kstatefulsets='kubectl get --all-namespaces -o wide statefulsets'
+alias kstorageclasses='kubectl get -o wide storageclasses'
+
+alias klocal='export KUBECONFIG='
+alias kstage='export KUBECONFIG=~/kubeconfig-iptesting.yaml'
