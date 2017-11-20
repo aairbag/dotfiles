@@ -13,13 +13,13 @@ fi
 
 #### Sensible Bash - github.com/mrzool/bash-sensible ####
 
-# Unique Bash version check
-if ((BASH_VERSINFO[0] < 4))
-then
-  echo "sensible.bash: Looks like you're running an older version of Bash."
-  echo "sensible.bash: You need at least bash-4.0 or some options will not work correctly."
-  echo "sensible.bash: Keep your software up-to-date!"
-fi
+# # Unique Bash version check
+# if ((BASH_VERSINFO[0] < 4))
+# then
+#   echo "sensible.bash: Looks like you're running an older version of Bash."
+#   echo "sensible.bash: You need at least bash-4.0 or some options will not work correctly."
+#   echo "sensible.bash: Keep your software up-to-date!"
+# fi
 
 ## GENERAL OPTIONS ##
 
