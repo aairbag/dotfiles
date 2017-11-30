@@ -1752,13 +1752,25 @@ _lp_set_prompt()
     LP_RUNTIME=$(_lp_sl "$(_lp_runtime)")
 
     # Display kubernetes current-context
-    if [[ $KUBECONFIG == "" ]]; then
-      LP_K8S="${LP_COLOR_MINIKUBE}local${NO_COL}"
-    elif [[ $KUBECONFIG == $HOME"/kubeconfig-iptesting.yaml" ]]; then
-      LP_K8S="${LP_COLOR_STAGING}staging${NO_COL}"
-    else
-      LP_K8S=
-    fi
+
+    LP_KUBECONFIG=$(kubectl config current-context 2>/dev/null) # Redirect stderr in case no context is set
+
+    case $LP_KUBECONFIG in
+      minikube)
+        LP_K8S=${LP_COLORMAP[2]}${LP_KUBECONFIG}${NO_COL}
+        ;;
+      juju-context)
+        LP_K8S=${LP_COLORMAP[3]}${LP_KUBECONFIG}${NO_COL}
+        ;;
+      will.iptesting.net)
+        LP_K8S=${LP_COLORMAP[4]}${LP_KUBECONFIG}${NO_COL}
+        ;;
+      *)
+        LP_K8S=
+        ;;
+    esac
+
+    # LP_K8S=${LP_K8S_COLOR}${LP_KUBE_CONFIG}${NO_COL}
 
     # if change of working directory
     if [[ "${LP_OLD_PWD-}" != "LP:$PWD" ]]; then

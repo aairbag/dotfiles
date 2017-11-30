@@ -85,7 +85,7 @@ alias ..="cd .."
 alias ...="cd ../.."
 
 # Colored up cat!
-alias cat="highlight -O ansi"
+alias cat="highlight -O ansi --force"
 
 #### My own stuff ####
 
@@ -102,7 +102,7 @@ alias grep='grep --color=auto' # file pattern searcher --colorized
 alias ip='whoami ; echo -e \ - Public IP Address: ; curl ipecho.net/plain ; echo ; echo -e \ - Internal IP Address: ;  ipconfig getifaddr en0' # show public and local ip adresses
 alias watch='watch '
 cd() { builtin cd "$@"; ls; }
-bind '"\ex": kill-whole-line'
+bind '"\ex": kill-whole-line' # delete entire line with alt-x
 
 # Kubernetes
 alias k='kubectl'
@@ -154,5 +154,37 @@ alias ksvc='kubectl get --all-namespaces -o wide svc'
 alias kstatefulsets='kubectl get --all-namespaces -o wide statefulsets'
 alias kstorageclasses='kubectl get -o wide storageclasses'
 
-alias klocal='export KUBECONFIG='
-alias kstage='export KUBECONFIG=~/kubeconfig-iptesting.yaml'
+function kontext() {
+  PS3="Enter context number: "
+  contexts=("minikube" "juju-context" "will.iptesting.net" "Unset context" "Quit")
+  select context in "${contexts[@]}"
+  do
+    case $context in
+      "minikube")
+        export KUBECONFIG=~/.kube/config
+        kubectl config use-context minikube
+        break
+        ;;
+      "juju-context")
+        export KUBECONFIG=~/.kube/kubeconfig_pequod.yaml
+        kubectl config use-context juju-context
+        break
+        ;;
+      "will.iptesting.net")
+        export KUBECONFIG=~/.kube/kubeconfig-iptesting.yaml
+        kubectl config use-context will.iptesting.net
+        break
+        ;;
+      "Unset context")
+        kubectl config unset current-context
+        break
+        ;;
+      "Quit")
+        break
+        ;;
+      *) echo wrong;;
+    esac
+  done
+}
+
+export -f kontext
