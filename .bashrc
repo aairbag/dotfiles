@@ -13,14 +13,6 @@ fi
 
 #### Sensible Bash - github.com/mrzool/bash-sensible ####
 
-# # Unique Bash version check
-# if ((BASH_VERSINFO[0] < 4))
-# then
-#   echo "sensible.bash: Looks like you're running an older version of Bash."
-#   echo "sensible.bash: You need at least bash-4.0 or some options will not work correctly."
-#   echo "sensible.bash: Keep your software up-to-date!"
-# fi
-
 ## GENERAL OPTIONS ##
 
 # Enable history expansion with space
@@ -91,7 +83,7 @@ alias cat="highlight -O ansi --force"
 
 alias cp='cp -iv' # copy file(s) -stderr if overwriting existing file -verbose
 alias mv='mv -iv' # move file(s) -stderr if overwriting existing file -verbose
-alias mkdir='mkdir -v' # make directory -verbose
+alias mkdir='mkdir -pv' # make directory -verbose
 alias path='echo -e ${PATH//:/\\n}' # echos all executable paths
 alias ls='ls -G' # list directory contents --colorized
 alias ll='ls -FGlahp' # list directory contents -display symbols based on filetype -colorized -long format -all -unit suffixes -slash after directory
@@ -188,3 +180,5 @@ function kontext() {
 }
 
 export -f kontext
+
+PATH=${PATH}:/usr/local/mysql/bin # Add mysql to path

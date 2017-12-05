@@ -7,24 +7,14 @@ document.addEventListener("DOMContentLoaded", function() {
    let webviews = document.querySelectorAll(".TeamView webview");
 
    // Fetch our CSS in parallel ahead of time
-   const cssPath = 'https://gist.githubusercontent.com/anziem/806da8b104ae360d53bd46d5e5c90c4f/raw/adde403b6417568a59a5a73578a7565fe04458a3/slack-solarized-theme.css';
+   const cssPath = 'https://gist.githubusercontent.com/antel0pe/3f3ca8d2ba40e5a0cd6e2f7c9646e435/raw/688fc439814d932c2677bfd7bd47d3762163ba22/slack-solarized-theme.css';
    let cssPromise = fetch(cssPath).then(response => response.text());
-
-   // let customCustomCSS = `
-   // :root {
-   //    /* Modify these to change your theme colors: */
-   //    --primary: #09F;
-   //    --text: #CCC;
-   //    --background: #080808;
-   //    --background-elevated: #222;
-   // }
-   // `
 
    // Insert a style tag into the wrapper view
    cssPromise.then(css => {
       let s = document.createElement('style');
       s.type = 'text/css';
-      s.innerHTML = css // + customCustomCSS;
+      s.innerHTML = css;
       document.head.appendChild(s);
    });
 
@@ -38,9 +28,7 @@ document.addEventListener("DOMContentLoaded", function() {
                      let s = document.createElement('style');
                      s.type = 'text/css';
                      s.id = 'slack-custom-css';
-                     s.innerHTML = \`${css
-                       //+ customCustomCSS
-                     }\`;
+                     s.innerHTML = \`${css}\`;
                      document.head.appendChild(s);
                      `
                webview.executeJavaScript(script);
