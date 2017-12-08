@@ -158,12 +158,12 @@ function kontext() {
         break
         ;;
       "juju-context")
-        export KUBECONFIG=~/.kube/kubeconfig_pequod.yaml
+        export KUBECONFIG=~/.kubeconfig/kubeconfig_pequod.yaml
         kubectl config use-context juju-context
         break
         ;;
       "will.iptesting.net")
-        export KUBECONFIG=~/.kube/kubeconfig-iptesting.yaml
+        export KUBECONFIG=~/.kubeconfig/kubeconfig-iptesting.yaml
         kubectl config use-context will.iptesting.net
         break
         ;;
