@@ -6,3 +6,10 @@ set mouse=a
 
 " Turn on line numbering
 set number
+
+" Activate syntax highlighting
+syntax enable
+
+" Set solarized background mode (dark or light)
+set background=dark
+colorscheme solarized
