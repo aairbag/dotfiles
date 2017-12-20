@@ -1,4 +1,5 @@
 alias reload="source ~/.bash_profile"
+alias watch='watch '
 
 # github.com/scop/bash-completion
 [ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
@@ -10,6 +11,9 @@ alias reload="source ~/.bash_profile"
 if [ -f ~/z.sh ]; then
    source ~/z.sh
 fi
+
+# github.com/ahmetb/kubectl-aliases
+[ -f ~/.kubectl_aliases ] && source ~/.kubectl_aliases
 
 #### Sensible Bash - github.com/mrzool/bash-sensible ####
 
@@ -92,59 +96,8 @@ alias c='clear'
 alias h='history'
 alias grep='grep --color=auto' # file pattern searcher --colorized
 alias ip='whoami ; echo -e \ - Public IP Address: ; curl ipecho.net/plain ; echo ; echo -e \ - Internal IP Address: ;  ipconfig getifaddr en0' # show public and local ip adresses
-alias watch='watch '
 cd() { builtin cd "$@"; ls; }
 bind '"\ex": kill-whole-line' # delete entire line with alt-x
-
-# Kubernetes
-alias k='kubectl'
-alias ktouch='kubectl create'
-alias kf='kubectl create -f'
-alias krm='kubectl delete'
-alias kvi='kubectl edit'
-alias kman='kubectl explain'
-alias kls='kubectl get -o wide'
-alias kcat='kubectl get -oyaml'
-
-# kubectl get
-alias kapiservices='kubectl get --all-namespaces -o wide apiservices'
-alias kcsr='kubectl get --all-namespaces -o wide csr'
-alias kclusters='kubectl get --all-namespaces -o wide clusters'
-alias kclusterrolebindings='kubectl get -o wide clusterrolebindings'
-alias kclusterroles='kubectl get -o wide clusterroles'
-alias kcs='kubectl get -o wide cs'
-alias kcm='kubectl get --all-namespaces -o wide cm'
-alias kcontrollerrevisions='kubectl get --all-namespaces -o wide controllerrevisions'
-alias kcronjobs='kubectl get --all-namespaces -o wide cronjobs'
-alias kcrd='kubectl get --all-namespaces -o wide crd'
-alias kds='kubectl get --all-namespaces -o wide ds'
-alias kdeploy='kubectl get --all-namespaces -o wide deploy'
-alias kep='kubectl get --all-namespaces -o wide ep'
-alias kev='kubectl get --all-namespaces -o wide ev'
-alias khpa='kubectl get --all-namespaces -o wide hpa'
-alias king='kubectl get --all-namespaces -o wide ing'
-alias kjobs='kubectl get --all-namespaces -o wide jobs'
-alias klimits='kubectl get --all-namespaces -o wide limits'
-alias kns='kubectl get -o wide ns'
-alias knetpol='kubectl get --all-namespaces -o wide netpol'
-alias kno='kubectl get -o wide no'
-alias kpvc='kubectl get --all-namespaces -o wide pvc'
-alias kpv='kubectl get --all-namespaces -o wide pv'
-alias kpdb='kubectl get --all-namespaces -o wide pdb'
-alias kpodpreset='kubectl get --all-namespaces -o wide podpreset'
-alias kpo='kubectl get --all-namespaces -o wide po'
-alias kpsp='kubectl get --all-namespaces -o wide psp'
-alias kpodtemplates='kubectl get --all-namespaces -o wide podtemplates'
-alias krs='kubectl get --all-namespaces -o wide rs'
-alias krc='kubectl get --all-namespaces -o wide rc'
-alias kquota='kubectl get --all-namespaces -o wide quota'
-alias krolebindings='kubectl get --all-namespaces -o wide rolebindings'
-alias kroles='kubectl get --all-namespaces -o wide roles'
-alias ksecrets='kubectl get --all-namespaces -o wide secrets'
-alias ksa='kubectl get --all-namespaces -o wide sa'
-alias ksvc='kubectl get --all-namespaces -o wide svc'
-alias kstatefulsets='kubectl get --all-namespaces -o wide statefulsets'
-alias kstorageclasses='kubectl get -o wide storageclasses'
 
 function kontext() {
   PS3="Enter context number: "
@@ -180,5 +133,3 @@ function kontext() {
 }
 
 export -f kontext
-
-PATH=${PATH}:/usr/local/mysql/bin # Add mysql to path
