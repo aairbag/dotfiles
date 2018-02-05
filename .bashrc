@@ -99,37 +99,8 @@ alias ip='whoami ; echo -e \ - Public IP Address: ; curl ipecho.net/plain ; echo
 cd() { builtin cd "$@"; ls; }
 bind '"\ex": kill-whole-line' # delete entire line with alt-x
 
-function kontext() {
-  PS3="Enter context number: "
-  contexts=("minikube" "juju-context" "will.iptesting.net" "Unset context" "Quit")
-  select context in "${contexts[@]}"
-  do
-    case $context in
-      "minikube")
-        export KUBECONFIG=~/.kube/config
-        kubectl config use-context minikube
-        break
-        ;;
-      "juju-context")
-        export KUBECONFIG=~/.kubeconfig/kubeconfig_pequod.yaml
-        kubectl config use-context juju-context
-        break
-        ;;
-      "will.iptesting.net")
-        export KUBECONFIG=~/.kubeconfig/kubeconfig-iptesting.yaml
-        kubectl config use-context will.iptesting.net
-        break
-        ;;
-      "Unset context")
-        kubectl config unset current-context
-        break
-        ;;
-      "Quit")
-        break
-        ;;
-      *) echo wrong;;
-    esac
-  done
-}
-
-export -f kontext
+alias kpf='kubectl port-forward'
+alias kpfn='kubectl port-forward -n'
+alias kc='kubectl config'
+alias kcg='kubectl config get-contexts'
+alias kcu='kubectl config use-context'

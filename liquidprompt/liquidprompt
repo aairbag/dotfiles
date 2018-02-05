@@ -1757,6 +1757,9 @@ _lp_set_prompt()
 
     case $LP_KUBECONFIG in
       minikube)
+        LP_K8S=${LP_COLORMAP[1]}${LP_KUBECONFIG}${NO_COL}
+        ;;
+      docker-for-desktop)
         LP_K8S=${LP_COLORMAP[2]}${LP_KUBECONFIG}${NO_COL}
         ;;
       juju-context)
@@ -1764,6 +1767,9 @@ _lp_set_prompt()
         ;;
       will.iptesting.net)
         LP_K8S=${LP_COLORMAP[4]}${LP_KUBECONFIG}${NO_COL}
+        ;;
+      stage.iptesting.net)
+        LP_K8S=${LP_COLORMAP[5]}${LP_KUBECONFIG}${NO_COL}
         ;;
       *)
         LP_K8S=

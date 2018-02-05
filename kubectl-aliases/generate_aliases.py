@@ -41,45 +41,46 @@ def main():
         ('d', 'describe', None, None),
         ('rm', 'delete', None, None),
         ('run', 'run --rm --restart=Never --image-pull-policy=IfNotPresent -i -t', None, None),
+        ('vi', 'edit', None, None)
         ]
 
     res = [
-        ('csr', 'certificatesigningrequests', ['g', 'd', 'rm'], None),
-        ('crb', 'clusterrolebindings', ['g', 'd', 'rm'], ['sys']),
-        ('cr', 'clusterroles', ['g', 'd', 'rm'], ['sys']),
-        ('cs', 'componentstatuses', ['g', 'd', 'rm'], None),
-        ('cm', 'configmaps', ['g', 'd', 'rm'], None),
-        ('cr', 'controllerrevisions', ['g', 'd', 'rm'], None),
-        ('cj', 'cronjobs', ['g', 'd', 'rm'], None),
-        ('crd', 'customresourcedefinition', ['g', 'd', 'rm'], None),
-        ('ds', 'daemonsets', ['g', 'd', 'rm'], None),
-        ('deploy', 'deployments', ['g', 'd', 'rm'], None),
-        ('ep', 'endpoints', ['g', 'd', 'rm'], None),
-        ('ev', 'events', ['g', 'd', 'rm'], None),
-        ('hpa', 'horizontalpodautoscalers', ['g', 'd', 'rm'], None),
-        ('ing', 'ingresses', ['g', 'd', 'rm'], None),
-        ('jobs', 'jobs', ['g', 'd', 'rm'], None),
-        ('limits', 'limitranges', ['g', 'd', 'rm'], None),
-        ('ns', 'namespaces', ['g', 'd', 'rm'], ['sys']),
-        ('netpol', 'networkpolicies', ['g', 'd', 'rm'], None),
-        ('no', 'nodes', ['g', 'd', 'rm'], ['sys']),
-        ('pvc', 'persistentvolumeclaims', ['g', 'd', 'rm'], None),
-        ('pv', 'persistentvolumes', ['g', 'd', 'rm'], None),
-        ('pdb', 'poddisruptionbudgets', ['g', 'd', 'rm'], None),
-        ('pp', 'podpreset', ['g', 'd', 'rm'], None),
-        ('po', 'pods', ['g', 'd', 'rm'], None),
-        ('psp', 'podsecuritypolicies', ['g', 'd', 'rm'], None),
-        ('pt', 'podtemplates', ['g', 'd', 'rm'], None),
-        ('rs', 'replicasets', ['g', 'd', 'rm'], None),
-        ('rc', 'replicationcontrollers', ['g', 'd', 'rm'], None),
-        ('quota', 'resourcequotas', ['g', 'd', 'rm'], None),
-        ('rb', 'rolebindings', ['g', 'd', 'rm'], None),
-        ('roles', 'roles', ['g', 'd', 'rm'], None),
-        ('secrets', 'secrets', ['g', 'd', 'rm'], None),
-        ('sa', 'serviceaccounts', ['g', 'd', 'rm'], None),
-        ('svc', 'services', ['g', 'd', 'rm'], None),
-        ('sts', 'statefulsets', ['g', 'd', 'rm'], None),
-        ('sc', 'storageclasses', ['g', 'd', 'rm'], None)
+        ('csr', 'certificatesigningrequests', ['g', 'd', 'rm', 'vi'], None),
+        ('crb', 'clusterrolebindings', ['g', 'd', 'rm', 'vi'], ['sys']),
+        ('crole', 'clusterroles', ['g', 'd', 'rm', 'vi'], ['sys']),
+        ('cs', 'componentstatuses', ['g', 'd', 'rm', 'vi'], None),
+        ('cm', 'configmaps', ['g', 'd', 'rm', 'vi'], None),
+        ('cr', 'controllerrevisions', ['g', 'd', 'rm', 'vi'], None),
+        ('cj', 'cronjobs', ['g', 'd', 'rm', 'vi'], None),
+        ('crd', 'customresourcedefinition', ['g', 'd', 'rm', 'vi'], None),
+        ('ds', 'daemonsets', ['g', 'd', 'rm', 'vi'], None),
+        ('deploy', 'deployments', ['g', 'd', 'rm', 'vi'], None),
+        ('ep', 'endpoints', ['g', 'd', 'rm', 'vi'], None),
+        ('ev', 'events', ['g', 'd', 'rm', 'vi'], None),
+        ('hpa', 'horizontalpodautoscalers', ['g', 'd', 'rm', 'vi'], None),
+        ('ing', 'ingresses', ['g', 'd', 'rm', 'vi'], None),
+        ('job', 'jobs', ['g', 'd', 'rm', 'vi'], None),
+        ('limits', 'limitranges', ['g', 'd', 'rm', 'vi'], None),
+        ('ns', 'namespaces', ['g', 'd', 'rm', 'vi'], ['sys']),
+        ('netpol', 'networkpolicies', ['g', 'd', 'rm', 'vi'], None),
+        ('no', 'nodes', ['g', 'd', 'vi'], ['sys']),
+        ('pvc', 'persistentvolumeclaims', ['g', 'd', 'rm', 'vi'], None),
+        ('pv', 'persistentvolumes', ['g', 'd', 'rm', 'vi'], None),
+        ('pdb', 'poddisruptionbudgets', ['g', 'd', 'rm', 'vi'], None),
+        ('pp', 'podpreset', ['g', 'd', 'rm', 'vi'], None),
+        ('po', 'pods', ['g', 'd', 'rm', 'vi'], None),
+        ('psp', 'podsecuritypolicies', ['g', 'd', 'rm', 'vi'], None),
+        ('pt', 'podtemplates', ['g', 'd', 'rm', 'vi'], None),
+        ('rs', 'replicasets', ['g', 'd', 'rm', 'vi'], None),
+        ('rc', 'replicationcontrollers', ['g', 'd', 'rm', 'vi'], None),
+        ('quota', 'resourcequotas', ['g', 'd', 'rm', 'vi'], None),
+        ('rb', 'rolebindings', ['g', 'd', 'rm', 'vi'], None),
+        ('role', 'roles', ['g', 'd', 'rm', 'vi'], None),
+        ('secret', 'secrets', ['g', 'd', 'rm', 'vi'], None),
+        ('sa', 'serviceaccounts', ['g', 'd', 'rm', 'vi'], None),
+        ('svc', 'services', ['g', 'd', 'rm', 'vi'], None),
+        ('sts', 'statefulsets', ['g', 'd', 'rm', 'vi'], None),
+        ('sc', 'storageclasses', ['g', 'd', 'rm', 'vi'], None)
         ]
     res_types = [r[0] for r in res]
 
@@ -87,20 +88,23 @@ def main():
         ('oyaml', '-o=yaml', ['g'], ['owide', 'ojson', 'sl']),
         ('owide', '-o=wide', ['g'], ['oyaml', 'ojson']),
         ('ojson', '-o=json', ['g'], ['owide', 'oyaml', 'sl']),
-        ('all', '--all-namespaces', ['g', 'd'], ['rm', 'f', 'no', 'sys'
-         ]),
+        ('all', '--all-namespaces', ['g', 'd'], ['rm', 'f', 'no', 'sys', 'vi']),
         ('sl', '--show-labels', ['g'], ['oyaml', 'ojson']
          + diff(res_types, ['po', 'dep'])),
-        ('all', '--all', ['rm'], None), # caution: reusing the alias
+        ('all', '--all', ['rm'], None),  # caution: reusing the alias
         ('w', '--watch', ['g'], ['oyaml', 'ojson', 'owide']),
         ]
 
     # these accept a value, so they need to be at the end and
     # mutually exclusive within each other.
-    positional_args = [('f', '--recursive -f', ['g', 'd', 'rm'], res_types + ['all'
-                       , 'l', 'sys']), ('l', '-l', ['g', 'd', 'rm'], ['f',
-                       'all']), ('n', '--namespace', ['g', 'd', 'rm',
-                       'lo', 'ex'], ['ns', 'no', 'sys', 'all'])]
+    positional_args = [('f', '--recursive -f',
+                       ['g', 'd', 'rm', 'vi'],
+                       res_types + ['all', 'l', 'sys']),
+                       ('l', '-l', ['g', 'd', 'rm', 'vi'],
+                       ['f', 'all']),
+                       ('n', '--namespace',
+                       ['g', 'd', 'rm', 'lo', 'ex', 'vi'],
+                       ['ns', 'no', 'sys', 'all'])]
 
     # [(part, optional, take_exactly_one)]
     parts = [
