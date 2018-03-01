@@ -1759,16 +1759,16 @@ _lp_set_prompt()
       minikube)
         LP_K8S=${LP_COLORMAP[1]}${LP_KUBECONFIG}${NO_COL}
         ;;
-      docker-for-desktop)
+      docker)
         LP_K8S=${LP_COLORMAP[2]}${LP_KUBECONFIG}${NO_COL}
         ;;
-      juju-context)
+      juju)
         LP_K8S=${LP_COLORMAP[3]}${LP_KUBECONFIG}${NO_COL}
         ;;
-      will.iptesting.net)
+      dev)
         LP_K8S=${LP_COLORMAP[4]}${LP_KUBECONFIG}${NO_COL}
         ;;
-      stage.iptesting.net)
+      stage)
         LP_K8S=${LP_COLORMAP[5]}${LP_KUBECONFIG}${NO_COL}
         ;;
       *)
