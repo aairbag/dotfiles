@@ -1752,31 +1752,25 @@ _lp_set_prompt()
     LP_RUNTIME=$(_lp_sl "$(_lp_runtime)")
 
     # Display kubernetes current-context
-
-    LP_KUBECONFIG=$(kubectl config current-context 2>/dev/null) # Redirect stderr in case no context is set
+    LP_KUBECONFIG=$(kubectl config current-context 2>/dev/null) # Redirect stderr in case no context is set (which results in an error)
 
     case $LP_KUBECONFIG in
-      minikube)
+      minikube) # - green
         LP_K8S=${LP_COLORMAP[1]}${LP_KUBECONFIG}${NO_COL}
         ;;
-      docker)
+      docker*) # - bold green
         LP_K8S=${LP_COLORMAP[2]}${LP_KUBECONFIG}${NO_COL}
         ;;
-      juju)
+      juju*) # - orange
         LP_K8S=${LP_COLORMAP[3]}${LP_KUBECONFIG}${NO_COL}
         ;;
-      dev)
+      stage*) # - bold orange
         LP_K8S=${LP_COLORMAP[4]}${LP_KUBECONFIG}${NO_COL}
         ;;
-      stage)
-        LP_K8S=${LP_COLORMAP[5]}${LP_KUBECONFIG}${NO_COL}
-        ;;
-      *)
-        LP_K8S=
+      *) # - bold red
+        LP_K8S=${LP_COLORMAP[6]}${LP_KUBECONFIG}${NO_COL}
         ;;
     esac
-
-    # LP_K8S=${LP_K8S_COLOR}${LP_KUBE_CONFIG}${NO_COL}
 
     # if change of working directory
     if [[ "${LP_OLD_PWD-}" != "LP:$PWD" ]]; then

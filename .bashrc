@@ -102,5 +102,15 @@ bind '"\ex": kill-whole-line' # delete entire line with alt-x
 alias kpf='kubectl port-forward'
 alias kpfn='kubectl port-forward -n'
 alias kc='kubectl config'
+alias kcc='kubectl config current-context'
 alias kcg='kubectl config get-contexts'
 alias kcu='kubectl config use-context'
+
+function aws()
+{
+  if [ -e /Volumes/secrets/devaws.sh ]
+  then
+    source /Volumes/secrets/devaws.sh
+    echo "AWS variables exported!"
+  fi
+}
