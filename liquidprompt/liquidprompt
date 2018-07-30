@@ -1755,7 +1755,7 @@ _lp_set_prompt()
     LP_KUBECONFIG=$(kubectl config current-context 2>/dev/null) # Redirect stderr in case no context is set (which results in an error)
 
     case $LP_KUBECONFIG in
-      minikube) # - green
+      docker-for-desktop) # - green
         LP_K8S=${LP_COLORMAP[1]}${LP_KUBECONFIG}${NO_COL}
         ;;
       docker*) # - bold green

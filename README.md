@@ -1,6 +1,6 @@
-# .dotfiles
+# dotfiles
 After cloning to home dir, set up links like so  
-`ln -svfn ~/.dotfiles/<FILE_NAME> ~`  
+`ln -svfn ~/dotfiles/<FILE_NAME> ~`  
 for the following files or directories  
 * liquidprompt
 * .bash_profile
@@ -10,4 +10,6 @@ for the following files or directories
 * .vimrc
 * .vim
 * z.sh
+* kubectl-aliases/.kubectl_aliases
 * liquidpromptrc (link to ~/.config/)
+

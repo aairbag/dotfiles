@@ -2,7 +2,7 @@
 [user]
 # Please adapt and uncomment the following lines:
 	name = Ethan Westover
-	email = ethan.westover@joltup.com
+	email = ethan.westover@finicity.com
 [color]
 	ui = auto
 [alias]
@@ -22,7 +22,6 @@
   undo = checkout --
   deletebranches = !sh -c \"git checkout master && git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d\"
   deletebrancheshere = !sh -c \"git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d\"
-
   la = "!git config -l | grep alias | cut -c 7-"
 [merge]
 	stat = true

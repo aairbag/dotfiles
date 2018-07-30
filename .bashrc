@@ -114,3 +114,5 @@ function aws()
     echo "AWS variables exported!"
   fi
 }
+
+export PATH="/usr/local/opt/node@8/bin:$PATH"
