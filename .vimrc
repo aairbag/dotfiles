@@ -14,10 +14,24 @@ syntax enable
 set background=dark
 colorscheme solarized
 
-" Indentation with 2 spaces instead of tabs
+" Use spaces instead of tabs
 set expandtab
+
+" Be smart when using tabs ;)
+set smarttab
+
+" 1 tab == 2 spaces
 set shiftwidth=2
-set softtabstop=2
+set tabstop=2
+
+set ai "Auto indent
+set si "Smart indent
 
 " New line automatically copies previous line's indentation
 set autoindent
+
+" Ignore case when searching
+set ignorecase
+
+" Highlight search results
+set hlsearch
