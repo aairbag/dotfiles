@@ -41,7 +41,8 @@ def main():
         ('d', 'describe', None, None),
         ('rm', 'delete', None, None),
         ('run', 'run --rm --restart=Never --image-pull-policy=IfNotPresent -i -t', None, None),
-        ('vi', 'edit', None, None)
+        ('vi', 'edit', None, None),
+        ('pf', 'port-forward', None, None)
         ]
 
     res = [
@@ -97,14 +98,9 @@ def main():
 
     # these accept a value, so they need to be at the end and
     # mutually exclusive within each other.
-    positional_args = [('f', '--recursive -f',
-                       ['g', 'd', 'rm', 'vi'],
-                       res_types + ['all', 'l', 'sys']),
-                       ('l', '-l', ['g', 'd', 'rm', 'vi'],
-                       ['f', 'all']),
-                       ('n', '--namespace',
-                       ['g', 'd', 'rm', 'lo', 'ex', 'vi'],
-                       ['ns', 'no', 'sys', 'all'])]
+    positional_args = [('f', '--recursive -f', ['g', 'd', 'rm'], res_types + ['all', 'l', 'sys']),
+                       ('l', '-l', ['g', 'd', 'rm', 'vi'],['f', 'all']),
+                       ('n', '--namespace', ['g', 'd', 'rm', 'lo', 'ex', 'vi', 'pf'], ['ns', 'no', 'sys', 'all'])]
 
     # [(part, optional, take_exactly_one)]
     parts = [

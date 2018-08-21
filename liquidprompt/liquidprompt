@@ -366,7 +366,7 @@ _lp_source_config()
     LP_COLOR_JOB_R=${LP_COLOR_JOB_R:-$BOLD_YELLOW}
     LP_COLOR_JOB_Z=${LP_COLOR_JOB_Z:-$BOLD_YELLOW}
     LP_COLOR_ERR=${LP_COLOR_ERR:-$RED}
-    LP_COLOR_MARK=${LP_COLOR_MARK:-$BOLD_GREEN}
+    LP_COLOR_MARK=${LP_COLOR_MARK:-$PINK}
     LP_COLOR_MARK_ROOT=${LP_COLOR_MARK_ROOT:-$BOLD_RED}
     LP_COLOR_MARK_SUDO=${LP_COLOR_MARK_SUDO:-$LP_COLOR_MARK_ROOT}
     LP_COLOR_USER_LOGGED=${LP_COLOR_USER_LOGGED:-""}
@@ -1755,18 +1755,18 @@ _lp_set_prompt()
     LP_KUBECONFIG=$(kubectl config current-context 2>/dev/null) # Redirect stderr in case no context is set (which results in an error)
 
     case $LP_KUBECONFIG in
-      docker-for-desktop) # - green
+      docker-for-desktop) # - no color
+        LP_K8S=${LP_COLORMAP[0]}${LP_KUBECONFIG}${NO_COL}
+        ;;
+      dev-k8s.fini.city*) # - green
         LP_K8S=${LP_COLORMAP[1]}${LP_KUBECONFIG}${NO_COL}
         ;;
-      docker*) # - bold green
-        LP_K8S=${LP_COLORMAP[2]}${LP_KUBECONFIG}${NO_COL}
-        ;;
-      juju*) # - orange
+      stage-k8s.fini.city*) # - orange
         LP_K8S=${LP_COLORMAP[3]}${LP_KUBECONFIG}${NO_COL}
         ;;
-      stage*) # - bold orange
-        LP_K8S=${LP_COLORMAP[4]}${LP_KUBECONFIG}${NO_COL}
-        ;;
+    #   stage*) # - bold orange
+    #     LP_K8S=${LP_COLORMAP[4]}${LP_KUBECONFIG}${NO_COL}
+    #     ;;
       *) # - bold red
         LP_K8S=${LP_COLORMAP[6]}${LP_KUBECONFIG}${NO_COL}
         ;;
